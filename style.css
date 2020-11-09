@@ -1,0 +1,125 @@
+*{
+	margin: 0;
+	padding: 0;
+	zbox-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background: #03dfff;
+	background-image: linear-gradient(to right, rgb(151, 235, 247),rgb(172, 229, 243),rgb(144, 144, 233),rgb(191, 131, 233),rgb(248, 43, 248)); 
+}
+.Title{
+    font-size: 28px;
+    text-align: center;
+	color:white;
+	background-color: rgb(250, 123, 229);
+}
+.container{
+    position: relative;
+    max-width:700px;
+    padding: 100px;
+    margin: 0 auto;
+}
+.addTask{
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+}
+.addTask > input[type = "text"]{
+    width: 90%;
+    color: #333;
+    border: none;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    font-size: 22px;
+    outline: none;
+}
+.addTask button{
+    height: 50px;
+    width: 70px;
+    border-radius: 25px;
+    margin: 0.55rem;
+    background-color: #7bdee6;
+    cursor: pointer;
+}
+.notCompleted .Completed{
+    margin: 5px 0;
+    padding: 20px;
+}
+
+h2{
+    font-size: 28px;
+    text-transform: uppercase ;
+    text-align: center;
+    color:rgb(226, 13, 13);
+}
+
+ol{
+    list-style: none;
+}
+ol li{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background: #f58282;
+    font-size: 20px;
+    counter-increment: my-counter;
+}
+ol.Completed li{
+    background: #89eba6;
+}
+ol li::before{
+    content: counter(my-counter);
+	background: #800bee;
+	height: 2rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 2rem;
+    text-align: center;
+    color: #fff;
+    margin-right: 0.5rem;
+
+}
+li button{
+	height: 40px;
+	width: 60px;
+	border-radius: 25px;
+    float: right;
+    padding: 1px;
+    font-size: 28px;
+    background: rgb(145, 124, 238);
+    cursor: pointer;
+}
+
+
+
+
+function add(){
+    const parent = this.parentNode;
+    parent.remove();
+    Completed.appendChild(parent);
+    checkButton.style.display='none';
+    editButton.style.display='none';
+
+}
+function del(){
+    const parent = this.parentNode;
+    parent.remove();
+}
+function edit(){
+    if(input.value !== ''){
+        const parent = this.parentNode;
+        parent.remove();
+        newList.textContent = input.value;
+        input.value = '';
+        notCompleted.appendChild(newList);
+        newList.appendChild(checkButton);
+        newList.appendChild(deleteButton);
+        newList.appendChild(editButton);
+        }
+} 
+
+checkButton.addEventListener('click', add());
+    deleteButton.addEventListener('click', del());
+    editButton.addEventListener('click', edit());
