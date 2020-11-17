@@ -42,6 +42,14 @@ body{
     background-color: #7bdee6;
     cursor: pointer;
 }
+.addTask button1{
+    height: 50px;
+    width: 70px;
+    border-radius: 25px;
+    margin: 0.55rem;
+    background-color: #7bdee6;
+    cursor: pointer;
+}
 .notCompleted .Completed{
     margin: 5px 0;
     padding: 20px;
@@ -91,35 +99,3 @@ li button{
     background: rgb(145, 124, 238);
     cursor: pointer;
 }
-
-
-
-
-function add(){
-    const parent = this.parentNode;
-    parent.remove();
-    Completed.appendChild(parent);
-    checkButton.style.display='none';
-    editButton.style.display='none';
-
-}
-function del(){
-    const parent = this.parentNode;
-    parent.remove();
-}
-function edit(){
-    if(input.value !== ''){
-        const parent = this.parentNode;
-        parent.remove();
-        newList.textContent = input.value;
-        input.value = '';
-        notCompleted.appendChild(newList);
-        newList.appendChild(checkButton);
-        newList.appendChild(deleteButton);
-        newList.appendChild(editButton);
-        }
-} 
-
-checkButton.addEventListener('click', add());
-    deleteButton.addEventListener('click', del());
-    editButton.addEventListener('click', edit());
